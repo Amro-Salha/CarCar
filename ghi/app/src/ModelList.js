@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import React from "react"
 
 function ModelList(){
   const [models, setModels] = useState([])
@@ -34,7 +35,7 @@ function ModelList(){
         <tr key={model.id}>
           <td>{model.name}</td>
           <td>{model.manufacturer.name}</td>
-          <td><img src={model.picture_url} /></td>
+          <td><img src={model.picture_url} style={{maxWidth: '300px'}} /></td>
         </tr>
       )
     })}

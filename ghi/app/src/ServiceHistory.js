@@ -57,7 +57,7 @@ function ServiceHistory () {
                 }
                 if (appointment.vin === vin) {
             return (
-                <tr key={appointment.href}>
+                <tr key={appointment.id}>
                 <td>{ appointment.vin }</td>
                 <td>{ appointment.name }</td>
                 <td>{ formatedDate }</td>
