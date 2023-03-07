@@ -20,6 +20,9 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="/appointments/history">Service History</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link active" aria-current="page" to="/technician">Add a Technician</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/salespersonform">Add a Salesperson</NavLink>
             </li>
             <li className="nav-item">
@@ -41,10 +44,10 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="/manufacturerform">Add a Manufacturer</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/modellist">View Models</NavLink>
+              <NavLink className="nav-link active" aria-current="page" to="/modellist">View Vehicles</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/modelform">Add a Model</NavLink>
+              <NavLink className="nav-link active" aria-current="page" to="/modelform">Add a Vehicle</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/autolist">View Inventory</NavLink>

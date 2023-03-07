@@ -32,11 +32,17 @@ function ServiceHistory () {
 
     return (
         <>
-        <div>
-            <input onChange={handleChange} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control"></input>
-            <label htmlFor="vin"></label>
-            <button onClick={handleSubmit}>Search</button>
-        </div>
+        <form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><input style={{width:"60vw"}} onChange={handleChange} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control"></input>
+                        <label htmlFor="vin"></label></td>
+                        <td style={{ padding:0 }} className="form-control"><button onClick={handleSubmit}>Search</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
         <table className="table table-striped">
         <thead>
             <tr>
