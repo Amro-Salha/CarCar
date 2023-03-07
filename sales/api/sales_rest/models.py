@@ -35,3 +35,5 @@ class SaleRecord(models.Model):
         related_name="sale_record",
         on_delete=models.CASCADE
     )
+
+    sale_price = models.IntegerField()
