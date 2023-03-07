@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-function AppointmentList () {
+function ServiceHistory () {
 
     const [appointments, setAppointments] = useState([])
-    const [vins, setVins] = useState([])
+    const [vin, setVin] = useState("")
+
+    let vinFilter = ""
+
+    const handleChange = (e) => {
+        vinFilter = e.target.value
+    }
+
 
     const getData = async () => {
         const res = await fetch('http://localhost:8080/api/services/')
@@ -12,35 +19,24 @@ function AppointmentList () {
             const data = await res.json()
             setAppointments(data.services)
         }
+    }
 
-        const response = await fetch('http://localhost:8100/api/automobiles/')
-
-        if (response.ok) {
-            const data = await response.json()
-            setVins(data.autos)
-        }
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setVin(vinFilter)
     }
 
     useEffect( () => {
         getData()
     }, [])
 
-    const handleDelete = async (e) => {
-        const appointmentUrl = `http://localhost:8080/api/services/${e.target.id}/`
-
-        const fetchConfigs = {
-            method: "Delete",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-
-        const response = await fetch(appointmentUrl, fetchConfigs)
-        getData()
-    }
-
-
     return (
+        <>
+        <div>
+            <input onChange={handleChange} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control"></input>
+            <label htmlFor="vin"></label>
+            <button onClick={handleSubmit}>Search</button>
+        </div>
         <table className="table table-striped">
         <thead>
             <tr>
@@ -50,26 +46,16 @@ function AppointmentList () {
             <th>Time</th>
             <th>Technician</th>
             <th>Reason</th>
-            <th>Purchased from Dealership</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             {appointments.map(appointment => {
                 let formatedDate = new Date(appointment.service_date).toLocaleDateString()
                 let formatedTime = new Date(appointment.time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-
                 if (formatedTime[0] == 0) {
                     formatedTime = formatedTime.replace('0', '')
                 }
-
-                let vip = "No"
-                for (let property of vins) {
-                    if (appointment.vin === property.vin) {
-                        vip = "Yes"
-                    }
-                }
-
-
+                if (appointment.vin === vin) {
             return (
                 <tr key={appointment.href}>
                 <td>{ appointment.vin }</td>
@@ -78,13 +64,12 @@ function AppointmentList () {
                 <td>{ formatedTime }</td>
                 <td>{ appointment.technician.technician_name }</td>
                 <td>{ appointment.reason }</td>
-                <td>{ vip }</td>
-                <td><button onClick={handleDelete} id={appointment.id} className="btn btn-danger">Cancel</button><button onClick={handleDelete} id={appointment.id} className="btn btn-success">Finished</button></td>
                 </tr>
-            );
+            )};
             })}
         </tbody>
         </table>
+        </>
 )}
 
-export default AppointmentList
+export default ServiceHistory

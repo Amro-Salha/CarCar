@@ -5,7 +5,7 @@ from .models import ServiceAppointment, Technician
 @admin.register(ServiceAppointment)
 class ServiceAppointmentAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'service_date', 'reason', 'technician', 'identification'
+        'name', 'service_date', 'reason', 'technician', 'identification', "time"
         )
 
 @admin.register(Technician)

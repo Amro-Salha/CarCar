@@ -20,9 +20,10 @@ class Technician(models.Model):
 
 class ServiceAppointment(models.Model):
     name = models.CharField(max_length=200)
-    service_date = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(null=True)
+    service_date = models.DateTimeField(null=True)
     reason = models.CharField(max_length=200)
-
+    vin = models.CharField(max_length=200)
     technician = models.ForeignKey(
         Technician,
         related_name="technician",
@@ -33,6 +34,7 @@ class ServiceAppointment(models.Model):
         AutomobileVO,
         related_name="identification",
         on_delete=models.CASCADE,
+        null = True
     )
 
     def get_api_url(self):

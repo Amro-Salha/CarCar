@@ -30,8 +30,10 @@ class ListServicesEncoder(ModelEncoder):
         "name",
         "service_date",
         "reason",
+        "time",
+        "vin",
         "technician",
-        "identification"
+        "id"
     ]
     encoders = {
         "technician": TechnicianEncoder(),
@@ -49,15 +51,6 @@ def api_list_service_appointments(request):
         )
     else:
         content = json.loads(request.body)
-        try:
-            automobile_href = content["identification"]
-            identification = AutomobileVO.objects.get(import_href=automobile_href)
-            content["identification"] = identification
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid automobile href"},
-                status=400,
-            )
 
         try:
             technician_id = content["technician"]
@@ -75,6 +68,14 @@ def api_list_service_appointments(request):
             encoder=ListServicesEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["DELETE"])
+def api_delete_appointment(request, id=None):
+    if request.method == "DELETE":
+        count, _ = ServiceAppointment.objects.filter(id=id).delete()
+        return JsonResponse({"deleted": count > 0})
+
 
 
 @require_http_methods(["GET", "POST"])
