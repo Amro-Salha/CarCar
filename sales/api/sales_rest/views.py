@@ -6,50 +6,14 @@ import json
 
 from common.json import ModelEncoder
 from .models import AutomobileVO, SalesPerson, Customer, SaleRecord
-
-# Create your views here.
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "vin",
-        "year",
-        "color",
-        "model",
-        "id"
-    ]
-
-class SalespeopleListEncoder(ModelEncoder):
-    model = SalesPerson
-    properties = [
-        "name",
-        "employee_number",
-        "id"
-    ]
-
-class CustomerEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        "name",
-        "address",
-        "phone_number",
-        "id"
-    ]
-
-class SaleEncoder(ModelEncoder):
-    model = SaleRecord
-    properties = [
-        "id",
-        "sale_price"
-    ]
-    def get_extra_data(self, o):
-        return { 'automobile' : o.automobile.vin, 'sales_person' : o.sales_person.name, 'customer' : o.customer.name }
+from .encoders import AutomobileVOEncoder, SalespeopleListEncoder, CustomerEncoder, SaleEncoder
 
 
 require_http_methods(['GET', 'POST'])
 def api_list_salespeople(request):
     if request.method == 'GET':
         sales_people = SalesPerson.objects.all()
-        return JsonResponse({'sales_people' : sales_people}, encoder=SalespeopleListEncoder)
+        return JsonResponse({'sales_people': sales_people}, encoder=SalespeopleListEncoder)
     else:
         content = json.loads(request.body)
         sales_person = SalesPerson.objects.create(**content)
@@ -59,11 +23,12 @@ def api_list_salespeople(request):
             safe=False,
         )
 
+
 require_http_methods(['GET', 'POST'])
 def api_list_customers(request):
     if request.method == 'GET':
         customers = Customer.objects.all()
-        return JsonResponse({'customers' : customers}, encoder=CustomerEncoder)
+        return JsonResponse({'customers': customers}, encoder=CustomerEncoder)
     else:
         content = json.loads(request.body)
         customer = Customer.objects.create(**content)
@@ -73,11 +38,12 @@ def api_list_customers(request):
             safe=False,
         )
 
+
 require_http_methods(['GET', 'POST'])
 def api_list_sales(request):
     if request.method == 'GET':
         sales = SaleRecord.objects.all()
-        return JsonResponse({'sales':sales}, encoder=SaleEncoder)
+        return JsonResponse({'sales': sales}, encoder=SaleEncoder)
     else:
         content = json.loads(request.body)
         try:

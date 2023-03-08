@@ -8,14 +8,17 @@ class AutomobileVO(models.Model):
     model = models.CharField(max_length=20)
     import_href = models.CharField(max_length=200, unique=True)
 
+
 class SalesPerson(models.Model):
     name = models.CharField(max_length=100)
     employee_number = models.CharField(max_length=100)
+
 
 class Customer(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=50)
+
 
 class SaleRecord(models.Model):
     automobile = models.ForeignKey(

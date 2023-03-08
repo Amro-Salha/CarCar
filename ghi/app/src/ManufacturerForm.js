@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg'
 
 function ManufacturerForm() {
+    
     const initialState = {
         name: "",
     }
@@ -15,11 +15,11 @@ function ManufacturerForm() {
         })
     }
 
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const manufacturersUrl = 'http://localhost:8100/api/manufacturers/'
-        console.log(formData)
         const fetchConfig =
         {
             method: "POST",
@@ -32,13 +32,12 @@ function ManufacturerForm() {
 
         const response = await fetch(manufacturersUrl, fetchConfig)
         if (response.ok) {
-            console.log(response)
             const newManufacturer = await response.json()
-            console.log(newManufacturer)
             setFormData(initialState)
         }
 
     }
+
 
     useEffect(() => {
     }, []);
@@ -48,7 +47,6 @@ function ManufacturerForm() {
             <div className="my-5">
                 <div className="row">
                     <div className="col col-sm-auto">
-                        {/* <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src={logo} /> */}
                     </div>
                     <div className="col">
                         <div className="card shadow">
@@ -74,4 +72,5 @@ function ManufacturerForm() {
         </div>
     )
 }
+
 export default ManufacturerForm

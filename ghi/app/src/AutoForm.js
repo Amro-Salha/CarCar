@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg'
 
 function AutoForm() {
+
+
     const [models, setModels] = useState([])
     const initialState = {
         color: "",
@@ -10,6 +11,7 @@ function AutoForm() {
         model_id: "",
     }
     const [formData, setFormData] = useState(initialState)
+
 
     const fetchModelData = async () => {
         const url = 'http://localhost:8100/api/models/'
@@ -29,6 +31,7 @@ function AutoForm() {
         dropdownClasses = 'form-select';
     }
 
+
     const handleFormChange = (event) => {
         setFormData({
             ...formData,
@@ -36,11 +39,11 @@ function AutoForm() {
         })
     }
 
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const autosUrl = 'http://localhost:8100/api/automobiles/'
-        console.log(formData)
         const fetchConfig =
         {
             method: "POST",
@@ -53,9 +56,7 @@ function AutoForm() {
 
         const response = await fetch(autosUrl, fetchConfig)
         if (response.ok) {
-            console.log(response)
             const newAuto = await response.json()
-            console.log(newAuto)
             setFormData(initialState)
         }
 
@@ -66,12 +67,12 @@ function AutoForm() {
         fetchModelData();
     }, []);
 
+
     return (
         <div className=" my-5 container">
             <div className="my-5">
                 <div className="row">
                     <div className="col col-sm-auto">
-                        {/* <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src={logo} /> */}
                     </div>
                     <div className="col">
                         <div className="card shadow">

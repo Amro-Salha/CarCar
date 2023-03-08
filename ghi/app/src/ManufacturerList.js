@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 
 function ManufacturerList(){
+
   const [manufacturers, setManufacturers] = useState([])
+
 
   async function loadManufacturers() {
     const response = await fetch('http://localhost:8100/api/manufacturers/')
@@ -14,30 +16,31 @@ function ManufacturerList(){
     }
   }
 
+
   useEffect(() => {
     loadManufacturers();
   }, []);
 
 
   return(
-  <table className='table table-striped'>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    {manufacturers.map( manufacturer => {
-      return(
-        <tr key={manufacturer.id}>
-          <td>{manufacturer.name}</td>
+    <table className='table table-striped'>
+      <thead>
+        <tr>
+          <th>Name</th>
         </tr>
-      )
-    })}
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+        {manufacturers.map( manufacturer => {
+          return(
+            <tr key={manufacturer.id}>
+              <td>{manufacturer.name}</td>
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
   )
-
+  
 }
 
 export default ManufacturerList

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg'
 
 function SalesPersonForm() {
     const initialState = {
@@ -16,31 +15,28 @@ function SalesPersonForm() {
         })
     }
 
+
     const handleSubmit = async (event) => {
         event.preventDefault()
-
         const salespersonUrl = 'http://localhost:8090/api/salespeople/'
-        console.log(formData)
         const fetchConfig =
         {
             method: "POST",
             body: JSON.stringify(formData),
-
             headers: {
                 'Content-Type': 'application/json'
             }
         }
 
+
         const response = await fetch(salespersonUrl, fetchConfig)
         if (response.ok) {
-            console.log(response)
             const newSalesperson = await response.json()
-            console.log(newSalesperson)
             setFormData(initialState)
         }
-
     }
 
+    
     useEffect(() => {
     }, []);
 
@@ -49,7 +45,6 @@ function SalesPersonForm() {
             <div className="my-5">
                 <div className="row">
                     <div className="col col-sm-auto">
-                        {/* <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src={logo} /> */}
                     </div>
                     <div className="col">
                         <div className="card shadow">
@@ -81,4 +76,5 @@ function SalesPersonForm() {
         </div>
     )
 }
+
 export default SalesPersonForm
