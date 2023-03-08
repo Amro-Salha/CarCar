@@ -70,7 +70,6 @@ function AppointmentList () {
                         }
                     }
 
-
                 return (
                     <tr key={appointment.id}>
                         <td>{ appointment.vin }</td>
@@ -80,9 +79,12 @@ function AppointmentList () {
                         <td>{ appointment.technician.technician_name }</td>
                         <td>{ appointment.reason }</td>
                         <td>{ vip }</td>
-                        <td><button onClick={handleDelete} id={appointment.id} className="btn btn-danger">Cancel</button><button onClick={handleDelete} id={appointment.id} className="btn btn-success">Finished</button></td>
+                        <td>
+                            <button onClick={handleDelete} id={appointment.id} className="btn btn-danger">Cancel</button>
+                            <button onClick={handleDelete} id={appointment.id} className="btn btn-success">Finished</button>
+                        </td>
                     </tr>
-                );
+                    );
                 })}
             </tbody>
         </table>

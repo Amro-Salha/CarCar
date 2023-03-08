@@ -17,7 +17,6 @@ def poll():
         try:
             response = requests.get("http://inventory-api:8000/api/automobiles/")
             content = json.loads(response.content)
-            
             for auto in content["autos"]:
                 AutomobileVO.objects.update_or_create(
                     import_href=auto["href"],
@@ -25,11 +24,9 @@ def poll():
                     year=auto['year'],
                     vin=auto['vin'],
                 )
-            print("Successfully updated")
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)
-
 
 if __name__ == "__main__":
     poll()
