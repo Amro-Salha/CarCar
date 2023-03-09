@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 function ServiceHistory () {
 
     const [appointments, setAppointments] = useState([])
@@ -32,6 +33,7 @@ function ServiceHistory () {
         getData()
     }, [])
 
+    
     return (
         <>
             <form>
