@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg'
 
 function SaleForm() {
     const [autos, setAutos] = useState([])
@@ -13,6 +12,7 @@ function SaleForm() {
     }
     const [formData, setFormData] = useState(initialState)
 
+
     const fetchAutomobileData = async () => {
         const url = 'http://localhost:8100/api/automobiles/';
 
@@ -24,6 +24,7 @@ function SaleForm() {
         }
     }
 
+
     const fetchSalesPersonData = async () => {
         const url = 'http://localhost:8090/api/salespeople/';
 
@@ -34,6 +35,7 @@ function SaleForm() {
             setSalespeople(data.sales_people)
         }
     }
+
 
     const fetchCustomerData = async () => {
         const url = 'http://localhost:8090/api/customers/';
@@ -53,6 +55,7 @@ function SaleForm() {
         dropdownClasses = 'form-select';
     }
 
+
     const handleFormChange = (event) => {
         setFormData({
             ...formData,
@@ -60,11 +63,12 @@ function SaleForm() {
         })
     }
 
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const salesUrl = 'http://localhost:8090/api/sales/'
-        console.log(formData)
+
         const fetchConfig =
         {
             method: "POST",
@@ -77,12 +81,11 @@ function SaleForm() {
 
         const response = await fetch(salesUrl, fetchConfig)
         if (response.ok) {
-            console.log(response)
+
             const newSale = await response.json()
-            console.log(newSale)
+
             setFormData(initialState)
         }
-
     }
 
 
@@ -97,7 +100,6 @@ function SaleForm() {
             <div className="my-5">
                 <div className="row">
                     <div className="col col-sm-auto">
-                        {/* <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src={logo} /> */}
                     </div>
                     <div className="col">
                         <div className="card shadow">

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 function TechnicianForm () {
+
     const [formData, setFormData] = useState({
         technician_name: "",
         employee_number: "",
     })
+
 
     const handleChange = (e) => {
         setFormData({
@@ -12,6 +14,7 @@ function TechnicianForm () {
             [e.target.name]: e.target.value,
         })
     }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -33,6 +36,7 @@ function TechnicianForm () {
             }
         };
 
+
     return (
     <div className="row">
         <div className="offset-3 col-6">
@@ -52,6 +56,7 @@ function TechnicianForm () {
             </div>
         </div>
     </div>
-)};
+    )
+}
 
 export default TechnicianForm;

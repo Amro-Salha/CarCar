@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg'
 
 function ModelForm() {
+
     const [manufacturers, setManufacturer] = useState([])
     const initialState = {
         name: "",
@@ -9,6 +9,7 @@ function ModelForm() {
         manufacturer_id: "",
     }
     const [formData, setFormData] = useState(initialState)
+
 
     const fetchManufacturerData = async () => {
         const url = 'http://localhost:8100/api/manufacturers/'
@@ -28,6 +29,7 @@ function ModelForm() {
         dropdownClasses = 'form-select';
     }
 
+
     const handleFormChange = (event) => {
         setFormData({
             ...formData,
@@ -35,11 +37,11 @@ function ModelForm() {
         })
     }
 
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const modelsURL = 'http://localhost:8100/api/models/'
-        console.log(formData)
         const fetchConfig =
         {
             method: "POST",
@@ -50,14 +52,12 @@ function ModelForm() {
             }
         }
 
+
         const response = await fetch(modelsURL, fetchConfig)
         if (response.ok) {
-            console.log(response)
             const newModel = await response.json()
-            console.log(newModel)
             setFormData(initialState)
         }
-
     }
 
 
@@ -70,7 +70,6 @@ function ModelForm() {
             <div className="my-5">
                 <div className="row">
                     <div className="col col-sm-auto">
-                        {/* <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src={logo} /> */}
                     </div>
                     <div className="col">
                         <div className="card shadow">
