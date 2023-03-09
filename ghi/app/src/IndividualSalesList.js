@@ -103,7 +103,7 @@ function IndividualSalesList(){
         </tbody>
         </table>
     </>
-    )
+  )
 
 }
 

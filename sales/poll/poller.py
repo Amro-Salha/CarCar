@@ -9,7 +9,6 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
-# Import models from hats_rest, here.
 from sales_rest.models import AutomobileVO
 
 def get_automobiles():

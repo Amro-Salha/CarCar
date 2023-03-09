@@ -11,12 +11,14 @@ class AutomobileVO(models.Model):
     def __str__(self):
         return self.vin
 
+
 class Technician(models.Model):
     technician_name = models.CharField(max_length=200)
     employee_number = models.CharField(max_length=200)
 
     def __str__(self):
         return self.technician_name
+
 
 class ServiceAppointment(models.Model):
     name = models.CharField(max_length=200)

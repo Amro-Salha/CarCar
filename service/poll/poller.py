@@ -11,6 +11,7 @@ django.setup()
 
 from service_rest.models import AutomobileVO
 
+
 def poll():
     while True:
         print('Service poller polling for data')
@@ -27,6 +28,7 @@ def poll():
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)
+
 
 if __name__ == "__main__":
     poll()
