@@ -15,9 +15,6 @@ Team:
 
 ## Sales microservice
 
-<<<<<<< HEAD
-When checking for automobiles that are currently in inventory, the poller will poll the port that the automobile service is running on for new automobileVO's. These automobileVO's will then be used as a means of getting information on the inventory without a direct connection between the 2 microservices and also without allowing changes to be made to the inventory from the sales microservice.
-=======
 Explain your models and integration with the inventory
 microservice, here.
 
@@ -27,4 +24,3 @@ microservice, here.
 Bounded Context Summary:
 
     CarCar has different bounded contexts that are designed to provide efficient functionality for their specific needs without interfering with the logic of other microservices. These contexts include the service, sales, react user interface, and inventory microservices, each with its own logic applied. When one microservice needs information from another (e.g., automobile information from the inventory microservice), a poller can be set up to retrieve the data whenever the automobile microservice's data is updated. This ensures that the microservices can work independently while still sharing information when necessary.
->>>>>>> bddb43758517a6045bba162dee9cfeb92815767d
