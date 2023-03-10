@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 function SaleForm() {
     const [autos, setAutos] = useState([])
     const [salespeople, setSalespeople] = useState([])
@@ -94,6 +95,7 @@ function SaleForm() {
         fetchSalesPersonData();
         fetchCustomerData();
     }, []);
+
 
     return (
         <div className=" my-5 container">

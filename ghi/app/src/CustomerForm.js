@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 function CustomerForm() {
     const initialState = {
         name: "",
@@ -37,6 +38,7 @@ function CustomerForm() {
             setFormData(initialState)
         }
     }
+
 
     useEffect(() => {
     }, []);

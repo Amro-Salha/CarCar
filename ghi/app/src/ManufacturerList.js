@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+
 function ManufacturerList(){
 
   const [manufacturers, setManufacturers] = useState([])
@@ -40,7 +41,7 @@ function ManufacturerList(){
       </tbody>
     </table>
   )
-  
+
 }
 
 export default ManufacturerList

@@ -1,6 +1,7 @@
 from common.json import ModelEncoder
 from service_rest.models import ServiceAppointment, Technician, AutomobileVO
 
+
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
@@ -9,6 +10,7 @@ class AutomobileVOEncoder(ModelEncoder):
         "year",
         ]
 
+
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
@@ -16,6 +18,7 @@ class TechnicianEncoder(ModelEncoder):
         "employee_number",
         "id"
         ]
+
 
 class ListServicesEncoder(ModelEncoder):
     model = ServiceAppointment

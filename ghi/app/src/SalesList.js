@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+
 function SalesList(){
   const [sales, setSales] = useState([])
 
@@ -13,6 +14,7 @@ function SalesList(){
       console.error(response)
     }
   }
+
 
   useEffect(() => {
     loadSales();

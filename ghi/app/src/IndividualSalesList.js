@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+
 function IndividualSalesList(){
   const [sales, setSales] = useState([])
   const [salespeople, setSalespeople] = useState([])

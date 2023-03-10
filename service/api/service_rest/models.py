@@ -8,15 +8,19 @@ class AutomobileVO(models.Model):
     color = models.CharField(max_length=200)
     year = models.CharField(max_length=200)
 
+
     def __str__(self):
         return self.vin
+
 
 class Technician(models.Model):
     technician_name = models.CharField(max_length=200)
     employee_number = models.CharField(max_length=200)
 
+
     def __str__(self):
         return self.technician_name
+
 
 class ServiceAppointment(models.Model):
     name = models.CharField(max_length=200)
@@ -36,6 +40,7 @@ class ServiceAppointment(models.Model):
         on_delete=models.CASCADE,
         null = True
     )
+
 
     def get_api_url(self):
         return reverse("api_list_service_appointments", kwargs={"pk": self.pk})
